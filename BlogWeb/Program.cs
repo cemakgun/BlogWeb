@@ -1,5 +1,6 @@
-using BlogWeb;
+
 using BlogWeb.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<DatabaseContext>(); // Added as a service
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(u =>
+{
+    u.LoginPath = "/Admin/Login"; // LoginPath in case user hasn't been logged in 
+});
 
 var app = builder.Build();
 
@@ -23,16 +29,17 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication(); // Open a session for Admin
 app.UseAuthorization();
-
-// Our route for the normal website landing pange
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 // Our route for Admin Area
 app.MapControllerRoute(
            name: "admin",
            pattern: "{area:exists}/{controller=Default}/{action=Index}/{id?}");
+
+// Our route for the normal website landing pange
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

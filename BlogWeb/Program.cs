@@ -25,8 +25,14 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+// Our route for the normal website landing pange
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+// Our route for Admin Area
+app.MapControllerRoute(
+           name: "admin",
+           pattern: "{area:exists}/{controller=Default}/{action=Index}/{id?}");
 
 app.Run();

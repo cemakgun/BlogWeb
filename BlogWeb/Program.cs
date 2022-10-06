@@ -1,7 +1,12 @@
+using BlogWeb;
+using BlogWeb.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<DatabaseContext>(); // Added as a service
 
 var app = builder.Build();
 

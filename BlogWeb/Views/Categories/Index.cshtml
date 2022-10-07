@@ -1,47 +1,35 @@
-﻿@model IEnumerable<BlogWeb.Entities.Category>
+﻿@model Category
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = Model.Name;
 }
 
-<h1>Index</h1>
+<h1>@Model.Name</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsActive)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsActive)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="album py-5 bg-light">
+    <div class="container">
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+            @foreach (var item in Model.Posts)
+            {
+                <div class="col">
+                    <div class="card shadow-sm">
+
+                        <img src="/Img/@item.Image" alt="@item.Title" title="@item.Title" class="img-fluid" />
+
+                        <div class="card-body">
+                            <p class="card-text">
+                                @item.Title
+                            </p>
+                            <div class="d-flex justify-content-between align-items-center">
+
+                                <small class="text-muted">@item.CreateDate.ToString()</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

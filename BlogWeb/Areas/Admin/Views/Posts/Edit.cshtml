@@ -1,18 +1,26 @@
-﻿@model BlogWeb.Entities.Post
+﻿@model Post
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "İçerik Düzenle";
 }
 
-<h1>Edit</h1>
+<h1>İçerik Düzenle</h1>
 
-<h4>Post</h4>
+<h4>İçerik Bilgileri</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="Image" />
+            <div class="form-group">
+                <label asp-for="CategoryId" class="control-label"></label>
+                <select asp-for="CategoryId" class="form-select" asp-items="ViewBag.CategoryId">
+                    <option value="">Seçiniz</option>
+                </select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
                 <input asp-for="Title" class="form-control" />
@@ -25,7 +33,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="Image" class="control-label"></label>
-                <input asp-for="Image" class="form-control" />
+                <input asp-for="Image" class="form-control" type="file" />
+                <img src="/Img/@Model.Image" alt="" height="80" title="@Model.Image" />
                 <span asp-validation-for="Image" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
@@ -39,14 +48,15 @@
                 </label>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Listeye Dön</a>
 </div>
+
 
 

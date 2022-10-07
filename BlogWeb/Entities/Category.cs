@@ -14,5 +14,12 @@ namespace BlogWeb.Entities
         public bool IsActive { get; set; }
         [Display(Name = "Eklenme Tarihi"), ScaffoldColumn(false)] // ScaffoldColumn attribute ü View larda CreateDate alanı için crud sayfalarında veri giriş alanı oluşmamasını sağlar.
         public DateTime? CreateDate { get; set; } = DateTime.Now;
+
+        public virtual List<Post> Posts { get; set; }
+        public Category()
+        {
+            Posts = new List<Post>();
+        }
+
     }
 }

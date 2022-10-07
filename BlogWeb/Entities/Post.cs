@@ -18,5 +18,10 @@ namespace BlogWeb.Entities
         public bool IsHome { get; set; }
         [Display(Name = "Eklenme Tarihi"), ScaffoldColumn(false)]
         public DateTime? CreateDate { get; set; } = DateTime.Now;
+        
+        [Display(Name = "Kategori")]
+        public int? CategoryId { get; set; }
+        [Display(Name = "Kategori")]
+        public virtual Category? Category { get; set; }
     }
 }

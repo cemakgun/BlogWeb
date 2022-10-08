@@ -9,9 +9,5 @@ namespace BlogWeb.Models
         public string Username { get; set; }
         [Display(Name = "Şifre"), StringLength(50), Required(ErrorMessage = "Bu alan gereklidir!"), DataType(DataType.Password)]
         public string Password { get; set; }
-
-
-
-
     }
 }

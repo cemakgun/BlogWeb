@@ -1,12 +1,14 @@
-﻿
-@model IEnumerable<Post>
+﻿@using AspNetCoreBlog.Models
+@model HomePageViewModel
 
 @{
     ViewData["Title"] = "Anasayfa";
 }
 
+@await Html.PartialAsync("_SliderPartial", Model.Sliders)
+
 <div class="text-center">
-    <h1 class="display-4">Blog Sitesi</h1>    
+    <h1 class="display-4">Blog Sitesi</h1>
 </div>
 
 <div class="album py-5 bg-light">
@@ -14,12 +16,10 @@
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
-           
-                @foreach (Post item in Model)
-                {
-                    
-                    @await Html.PartialAsync("_BlogPartial", item)
-                }
+            @foreach (Post item in Model.Posts)
+            {
+                @await Html.PartialAsync("_BlogPartial", item)
+            }
         </div>
     </div>
 </div>

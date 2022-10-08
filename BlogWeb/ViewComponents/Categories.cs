@@ -15,8 +15,9 @@ namespace BlogWeb.ViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View(await _context.Categories.ToListAsync());
+            return View(await _context.Categories.ToArrayAsync());
         }
+ 
 
     }
    

@@ -27,6 +27,9 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Contact">İletişim</a>
                         </li>
                     </ul>
+                    <form asp-controller="Posts" asp-action="Index" method="get" class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
+                        <input name="kelime" type="search" class="form-control" placeholder="Ara..." aria-label="Ara">
+                    </form>
                 </div>
             </div>
         </nav>

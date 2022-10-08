@@ -1,19 +1,18 @@
-﻿@model Category
+﻿@model IEnumerable<Post>
 
 @{
-    ViewData["Title"] = Model.Name;
+    ViewData["Title"] = "Arama Sonuçları";
 }
 
-<h1>@Model.Name</h1>
+<h1>Arama Sonuçları</h1>
 
 <div class="album py-5 bg-light">
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            @foreach (var item in Model.Posts)
+            @foreach (Post item in Model)
             {
                 @await Html.PartialAsync("_BlogPartial", item)
             }
-
         </div>
     </div>
 </div>

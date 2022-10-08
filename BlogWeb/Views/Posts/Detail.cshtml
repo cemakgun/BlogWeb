@@ -1,0 +1,20 @@
+﻿@model Post
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="row">
+    <div class="col">
+        <img src="/Img/@Model.Image" alt="@Model.Title" title="@Model.Title" class="img-fluid" />
+    </div>
+    <div class="col">
+        <h1>@Model.Title</h1>
+        <p>
+            @Model.Description
+        </p>
+        <p>
+            @Model.CreateDate
+        </p>
+    </div>
+</div>
